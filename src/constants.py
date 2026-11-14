@@ -1,1 +1,16 @@
-SAMPLE_CONSTANT: int = 10
+LANGUAGE = (
+    "Russian",
+    "English",
+    "German",
+    "French",
+    "Spanish",
+    "Italian",
+    "Portuguese",
+    "Chinese",
+    "Japanese",
+    "Korean",
+    "Arabic",
+    "Hindi",
+    "Turkish",
+    "Polish",
+)
