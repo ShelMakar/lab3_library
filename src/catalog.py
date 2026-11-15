@@ -1,7 +1,7 @@
-from typing import Iterator
+from collections.abc import Iterator
 
+from errors import ItemNotFoundError, NotUniqueIDError
 from models import Item
-from errors import NotUniqueIDError, ItemNotFoundError
 
 
 class Catalog:

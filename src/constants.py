@@ -14,3 +14,5 @@ LANGUAGE = (
     "Turkish",
     "Polish",
 )
+
+VERSION_FORMAT = 1

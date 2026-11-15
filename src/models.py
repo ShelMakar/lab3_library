@@ -1,6 +1,7 @@
-from dataclasses import dataclass
-from errors import IncorrectItemError
+from dataclasses import asdict, dataclass
+
 from constants import LANGUAGE
+from errors import IncorrectItemError
 
 
 @dataclass(frozen=True)
@@ -23,8 +24,6 @@ class Item:
             raise IncorrectItemError(f'Некорректное название: {self.name}')
         if not self.name.strip():
             raise IncorrectItemError(f'Некорректное название: {self.name}')
-        if any(i.isdigit() for i in self.name):
-            raise IncorrectItemError(f'Некорректное название: {self.name}')
 
         if not isinstance(self.category, str):
             raise IncorrectItemError(f'Некорректная категория: {self.category}')
@@ -35,7 +34,7 @@ class Item:
 
         if type(self.year) is not int:
             raise IncorrectItemError(f'Некорректный год: {self.year}')
-        if 0 < self.year < 2027:
+        if not(0 < self.year < 2027):
             raise IncorrectItemError(f'Некорректный год: {self.year}')
 
         if not isinstance(self.author, str):
@@ -47,3 +46,11 @@ class Item:
 
         if self.language not in LANGUAGE:
             raise IncorrectItemError(f'Некорректный язык: {self.language}')
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "Item":
+        data = dict(data)  # копия, не портим вход
+        return cls(**data)
