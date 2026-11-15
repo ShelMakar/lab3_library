@@ -1,4 +1,4 @@
-class CatalogError(ValueError):
+class CatalogError(Exception):
     """Базовый класс ошибок"""
 
 class IncorrectItemError(CatalogError):
