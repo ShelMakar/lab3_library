@@ -1,0 +1,53 @@
+{
+  "format_version": 1,
+  "items": [
+    {
+      "item_id": "b001",
+      "name": "Война и мир",
+      "category": "Роман",
+      "year": 1869,
+      "author": "Лев Толстой",
+      "language": "Russian"
+    },
+    {
+      "item_id": "b002",
+      "name": "Анна Каренина",
+      "category": "Роман",
+      "year": 1878,
+      "author": "Лев Толстой",
+      "language": "Russian"
+    },
+    {
+      "item_id": "b003",
+      "name": "Преступление и наказание",
+      "category": "Роман",
+      "year": 1866,
+      "author": "Фёдор Достоевский",
+      "language": "Russian"
+    },
+    {
+      "item_id": "b005",
+      "name": "Евгений Онегин",
+      "category": "Поэма",
+      "year": 1833,
+      "author": "Александр Пушкин",
+      "language": "Russian"
+    },
+    {
+      "item_id": "b006",
+      "name": "Ревизор",
+      "category": "Пьеса",
+      "year": 1836,
+      "author": "Николай Гоголь",
+      "language": "Russian"
+    },
+    {
+      "item_id": "b007",
+      "name": "Вишнёвый сад",
+      "category": "Пьеса",
+      "year": 1904,
+      "author": "Антон Чехов",
+      "language": "Russian"
+    }
+  ]
+}

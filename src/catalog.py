@@ -26,7 +26,7 @@ class Catalog:
             raise ItemNotFoundError(f"ID {item_id!r} не найден") from None
 
     def find_by_category(self, category: str) -> list[Item]:
-        return [item for item in self._items.values() if item.category == category]
+        return [item for item in self._items.values() if item.category.lower() == category.lower()]
 
     def find_by_name(self, query: str) -> list[Item]:
         q = query.lower()
