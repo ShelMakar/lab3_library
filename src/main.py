@@ -5,7 +5,7 @@ from collections.abc import Callable, Sequence
 from pathlib import Path
 
 from catalog import Catalog
-from errors import CatalogError
+from errors import CatalogError, NotUniqueIDError
 from models import Item
 from storage import load_catalog, save_catalog
 
@@ -51,6 +51,13 @@ def build_parser() -> argparse.ArgumentParser:
     by_name.add_argument("--name", required=True)
 
     sub.add_parser("list", parents=[common], help="показать все книги")
+
+    imp = sub.add_parser(
+        "import", parents=[common], help="добавить записи из другого JSON-файла"
+    )
+    imp.add_argument(
+        "--add_file", required=True, help="файл, из которого брать записи"
+    )
 
     return parser
 
@@ -101,6 +108,17 @@ def cmd_list(catalog: Catalog, args: argparse.Namespace) -> bool:
     return False
 
 
+def cmd_import(catalog: Catalog, args: argparse.Namespace) -> bool:
+    new_items = list(load_catalog(Path(args.add_file)))
+    duplicates = [i.item_id for i in new_items if i.item_id in catalog]
+    if duplicates:
+        raise NotUniqueIDError(f"ID уже есть в каталоге: {', '.join(duplicates)}")
+    for item in new_items:
+        catalog.add(item)
+    print(f"Импортировано записей: {len(new_items)}")
+    return True
+
+
 HANDLERS: dict[str, Callable[[Catalog, argparse.Namespace], bool]] = {
     "add": cmd_add,
     "get": cmd_get,
@@ -108,6 +126,7 @@ HANDLERS: dict[str, Callable[[Catalog, argparse.Namespace], bool]] = {
     "find_by_category": cmd_find_by_category,
     "find_by_name": cmd_find_by_name,
     "list": cmd_list,
+    "import": cmd_import,
 }
 
 
