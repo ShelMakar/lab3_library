@@ -2,15 +2,15 @@ import json
 import os
 from pathlib import Path
 
-from catalog import Catalog
-from constants import VERSION_FORMAT
-from errors import (
+from .catalog import Catalog
+from .constants import VERSION_FORMAT
+from .errors import (
     BrokenFileError,
     IncorrectItemError,
     IncorrectVersionFormatError,
     NotUniqueIDError,
 )
-from models import Item
+from .models import Item
 
 
 def save_catalog(catalog: Catalog, path: str | Path) -> None:

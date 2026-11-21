@@ -1,7 +1,7 @@
 from dataclasses import asdict, dataclass
 
-from constants import LANGUAGE
-from errors import IncorrectItemError
+from .constants import LANGUAGE
+from .errors import IncorrectItemError
 
 
 @dataclass(frozen=True)
