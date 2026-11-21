@@ -4,10 +4,10 @@ import sys
 from collections.abc import Callable, Sequence
 from pathlib import Path
 
-from .catalog import Catalog
-from .errors import CatalogError, NotUniqueIDError
-from .models import Item
-from .storage import load_catalog, save_catalog
+from catalog import Catalog
+from errors import CatalogError, NotUniqueIDError
+from models import Item
+from storage import load_catalog, save_catalog
 
 DEFAULT_FILE = "catalog.json"
 
